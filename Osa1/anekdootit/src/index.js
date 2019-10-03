@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
+import { jsxClosingElement } from '@babel/types';
 
 const Button = (props) => (
     <button onClick={props.handleClick}>{props.text}</button>
@@ -23,6 +24,7 @@ const mostPoints = (points) => {
     }
     return mostVoted
 }
+
 
 
 const App = (props) => {
