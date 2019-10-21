@@ -1,11 +1,6 @@
 import React from 'react'
 
-const handleClick = (person) => {
-    console.log(person.name)
-    
 
-
-}
 
 const Person = ({person, clickhandler}) => {
     return (

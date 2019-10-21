@@ -1,4 +1,3 @@
-import React from 'react'
 
  const showPersons = (showAll, persons, show) => { 
  

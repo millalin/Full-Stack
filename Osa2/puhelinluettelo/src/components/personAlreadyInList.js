@@ -1,4 +1,3 @@
-import React from 'react'
 
 const personAlreadyInList = (persons, newName) => (
     (persons.map(person => person.name).includes(newName))

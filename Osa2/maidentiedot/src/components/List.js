@@ -1,27 +1,21 @@
 import Country from './Country'
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const List = ({countries}) => {
+const List = ({ countries }) => {
 
     const [show, setShow] = useState('')
-    
-
-    
+    const [weather, setWeather] = useState([])
 
     const handleClick = (country) => {
         console.log(country.name)
         setShow(country.name)
 
-
     }
     const handleFilter = (event) => {
         setShow(event.target.value)
-        
-    
-    
-      
-      }
+
+    }
 
     const list = () => {
 
@@ -29,16 +23,26 @@ const List = ({countries}) => {
         const howmany = list.length
 
 
+
         if (howmany > 10) {
             return <p>Too many matches, specify</p>
         } else if (howmany === 1) {
 
-            return list
-                .map(country => <Country
-                    key={country.name}
-                    country={country}
-                    
-                />)
+            axios
+                .get(`http://api.weatherstack.com/current
+                ? access_key = SECRETKEY
+                & query = ${list[0].capital}`)
+                .then(response => setWeather(response.data))
+
+
+
+            return (
+                <div><Country
+
+                    country={list[0]}
+                    weather={weather}
+
+                /></div>)
         } else {
             return list.map(
                 country => <div key={country.name}> <ul> {country.name}
@@ -57,13 +61,8 @@ const List = ({countries}) => {
 
                 />
             </form>
-            <div>  {list(countries)}</div>
-
-
-
+            <div>  {list()}</div>
         </div>
-
-
     )
 }
 
